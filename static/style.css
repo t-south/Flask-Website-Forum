@@ -1,0 +1,487 @@
+.load{
+	display: none;	
+	border-radius: 50%;
+	width: auto;
+	height: auto;	
+}
+button{
+	background-color:grey;	
+}
+button:hover, #opposedClaim, #equivalentClaim{
+	background-color: white;
+}
+body {
+	overflow-y: scroll;	
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	background-color: #FFF4C2;
+}
+
+p{
+	white-space: normal;
+}
+#websiteImage{
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: auto;
+	width: auto;
+	max-height: 7vh;
+}
+.container#topicButtonContainer, .container#claimButtonContainer {
+	left: 0;
+	width: 20vw;
+}
+#postTopicButton, #postClaimButton{
+	display: block;
+	visibility: hidden;
+	border-top-right-radius: 15px;
+	border-bottom-right-radius: 15px;
+	min-height: 4vh;
+	min-width: 8vw;
+	border:none;
+}
+.relationShipDisplay{
+	background-color: white;
+}
+#topMenu {
+	position: fixed;
+	background-color: #cc9966;
+	border-bottom: medium solid black;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 7%;
+	z-index: 900;	
+	
+}
+#topMenu ul li {
+	list-style-type: none;
+}
+.menuButton {
+	position: relative;	
+	float: right;
+	margin-left: 2.5%;
+	margin-right: 2.5%;		
+}
+#content{	
+	padding-bottom: 2%;
+	padding-top: 1%;
+	z-index: -1;
+}
+.contentButton{
+	padding-top: 6%;
+	position: relative;
+	z-index: 3;	
+	width: 21%;	
+}
+.container {
+	border: medium solid black;
+	position: absolute;
+	height: auto;
+	width: auto;
+	right: 11%;
+	padding: 10%;
+	background-color: grey;
+	display:none;
+}
+#createAccount{	
+	display: none;
+}
+#logout { 
+	display: none;
+}
+#loggedIn {
+	position: absolute;
+	float: right;
+	right: 40%;
+	top: 0%;
+	left: 20%;
+}
+.listContainer{
+	border: medium solid black;
+	position: relative;
+	box-sizing: border-box;
+	display:none;
+	left: 2%;	
+	margin-top: 2%;	
+	margin-bottom: 2%;
+	width: 80%;	
+	white-space:nowrap;	
+	background-color: #FFFDDD;
+	border-radius: 15px;
+	
+}
+#confirmChangeDisplay{
+	background-color: white;
+	width: auto;
+	height: auto;
+	min-height: 10vh;
+	word-wrap: break-word;
+}
+.topic {	
+	
+	border-right: thick solid #cc9966;	
+
+	width: 90%;	
+}
+.replyContainer .moveBoxUp{	
+	width: 40%;
+	left: 15%;
+	top: 15%;
+}
+.replyContainer .moveBoxDown{	
+	width: 40%;
+	left: 15%;
+	bottom: 15%;
+}
+
+.replyContainer .placeReply{	
+	position: absolute;
+	width: 40%;
+	left: 15%;
+	top: 45%;
+}
+.moveBoxUp{
+	position: absolute;
+	width: 40%;
+	left: 25%;
+	top: 0%;
+}
+#placeTopic, #placeClaim{
+	position:absolute;
+	width: 40%;
+	left: 25%;
+	top: 40%;
+}
+#selectTopicMove{
+	position:absolute;
+	
+	left: 0%;
+	top: 40%;
+}
+.moveBoxDown{
+	position: absolute;
+	width: 40%;
+	left: 25%;
+	bottom: 0%;
+}
+.claim {	
+	border-right: thick solid #cc9966;	
+	display:block;
+	width: 90%;	
+}
+.header{
+	position: relative;
+	text-align: center;
+	padding: 5% 0%;	
+	border-bottom: medium solid black;
+}
+.author {	
+	background-color: #d6d4ba;
+	border-bottom-left-radius: 11px;
+	position: relative;
+	display: inline-block;
+	min-height: 3.4vh;
+	text-align: center;
+	border-right: medium solid #cc9966;
+	width: 49.4%;	
+}
+#searchButton, #loginButton, #logoutButton, #adminButton, #selectClaimList, #cancelSelector {
+	border-radius: 15px;	
+	border: none;
+	min-height: 4vh;
+	min-width: 8vw;
+}
+
+#selectClaimList{
+	position: absolute;
+	bottom: 0%;
+	right: 3%;
+}
+#cancelSelector{
+	position: absolute;
+	top: 1%;
+	right: 3%;
+}
+#createAccountButton , input[type = submit], #adminNoConfirm, #opposedClaim, #equivalentClaim {
+	border-radius: 15px;
+	border: none;
+	background-color: wheat;	
+}
+#createAccountButton:hover , input[type = submit]:hover{
+	border-radius: 15px;
+	background-color: white;	
+}
+.deleteDisplay{
+	position: absolute;
+	left: 30%;
+	text-align: center;
+}
+.replies .deleteDisplay{
+	background-color: lightblue;
+	left: 0;
+	width: 61%;
+	height: 74%;
+}
+.time{	
+	background-color: #d6d4ba;
+	position: relative;
+	display: inline-block;
+	text-align: center;
+	border-left: medium solid #cc9966;
+	width: 49.2%;
+	min-height: 3.4vh;					
+}
+.claim:hover, .topic:hover{
+	background-color: white;
+	border-top-left-radius: 15px;
+	border-bottom-left-radius: 15px;
+}
+#claimButtonContainer{
+	left: 0;
+	min-width: 30vw;
+}
+.admin{
+	position: absolute;
+	right: 0%;
+	bottom: 0%;
+	width: 9.5%;	
+	height: 100%;		
+	border-left: thin solid black;
+	display: none;
+	
+}
+#closeClaimList, .closeClaimPage, #closeSearchList{
+	position: absolute;
+	border-top-right-radius: 12px;	
+	top: 0;
+	right: 0;
+	border: none;
+	min-width: 10vh;
+	min-height: 5vh;
+}
+.message{
+	display: block;
+}
+.claimList, .searchResult{
+	border-radius: 15px;
+	border: medium solid black;
+	position: relative;
+	display: none;
+	min-height: 20vh;
+	width: 90vw;
+	left: 2%;
+	padding: 2% 0%;
+	background-color: #d6d4ba;
+}
+.claimContainer{
+	border: medium solid black;
+	position: relative;
+	border-radius: 15px;
+	display: none;
+	left: 2%;	
+	margin-top: 2%;	
+	margin-bottom: 2%;
+	padding-bottom: 5%;
+	width: 90vw;	
+	background-color: #d6d4ba;
+}
+.claimHead{
+	border: medium solid black;
+	text-align: center;
+	margin-top: 2%;
+	margin-left: 2%;
+	min-height: 5%;
+	border-radius: 15px;
+	max-width: 60%;
+	padding-top: 2%;
+	margin-bottom: 5%;
+	background-color: #cc9966;
+
+}
+.claimContent{
+	position: relative;
+	border: medium solid black;
+	border-radius: 15px;
+	min-height: 40vh;
+	max-width: 60%;
+	margin-left: 2%;
+	background-color: ivory;
+	margin-bottom: 6%;
+	
+}
+.claimAuthor, .claimTime{
+	position: relative;	
+	text-align: center;
+	width: 50%;
+	
+}
+td{
+	white-space: nowrap;
+}
+
+.contents{
+	
+	padding-left: 2%;
+	padding-right: 2%;
+}
+.opposed{
+	position: absolute;
+	border: medium solid black;
+	border-radius: 15px;
+	top: 0%;
+	left: 110%;
+	height: 30%;
+	width: 40%;
+	background-color: ivory;
+}
+.equivalent{
+	position: absolute;
+	border: medium solid black;
+	border-radius: 15px;
+	top: 50%;
+	left: 110%;
+	height: 30%;
+	width: 40%;
+	background-color: ivory;
+}
+.claimHeader{
+	background-color: #cc9966;
+	text-align: center;
+	border-top-left-radius: 11px;
+	border-top-right-radius: 11px;
+
+}
+.listContainer:nth-child(2) .moveBoxUp{
+	display: none;
+}
+.replies:first-of-type > .replyContainer .moveBoxUp{
+	display: none;
+}
+.claimContainer > .replies:nth-child(5) > .replyContainer .moveBoxUp{
+	display: none;
+}
+.claimContainer > .replies:last-of-type > .replyContainer .moveBoxDown{
+	display: none;
+}
+.replies:last-of-type > .replyContainer .moveBoxDown{
+	display: none;
+}
+.listContainer:nth-last-child(1) .moveBoxDown{
+	display: none;
+}
+.move{
+	position:absolute;
+	border: none;
+	top: 0%;
+	right: 0;
+	width: 98%;
+	height: 25%;
+	border-top-right-radius: 12px;
+	background-color: grey;
+}
+.move:hover{	
+	border-top-right-radius: 12px;
+}
+.delete{
+	position:absolute;
+	border: none;
+	bottom: 0;
+	right: 0;
+	width: 98%;
+	height: 25%;
+	border-bottom-right-radius: 12px;
+	background-color: grey;
+}
+.delete:hover{	
+	border-bottom-right-radius: 12px;
+}
+.replyToButton{
+	position:absolute;
+	border: none;
+	top: 75%;
+	right: 0;
+	width: 100%;
+	height: 25%;	
+}
+.replyButton{
+	position: absolute;	
+	bottom: -9.5%;
+	right: 0;
+	visibility: hidden;
+}
+.showReplies{
+	position: relative;	
+	display: none;
+	width: 100%;		
+	
+}
+.replies{
+	margin-left: 50px;
+	display: none;
+}
+.replyTypeContent{	
+	z-index: 2;
+	background-color: ivory;
+}
+.replyAdmin{
+	position: relative;	
+	background-color: ivory;	
+}
+.replyAdmin button{
+	width: 100%;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	display:block;
+	visibility: hidden;	
+}
+.replyContents{	
+	z-index: 2;
+	min-height: 22vh;
+	border-right: thin solid #cc9966;
+	min-width: 100%;
+	max-width: 30vw;
+	background-color: ivory;
+}
+.movereplyDisplay{
+	white-space: normal;
+	height: 20vh;
+	background-color: lightblue;
+}
+.replyContainer{
+	border: medium solid black;
+	background-color: #cc9966;
+	width: 90%;
+	position: relative;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	
+}
+#replyTemplate{
+	display: none;
+}
+.claimContent > .container{
+	position: absolute;
+	bottom: -79%;
+	right: 0;	
+	padding: 9%;
+	z-index: 3;
+	display: none;
+	background-color: grey;
+}
+.replyContainer .container{
+	position: absolute;	
+	right: 0%;
+	top: 83.5%;
+	margin-top: 1.6%;
+	display:none;	
+	padding: 10%;
+	z-index: 1;	
+}
+.noReplies{
+	position: relative;
+	left: 2%;
+	text-align: center;
+}

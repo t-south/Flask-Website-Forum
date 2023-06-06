@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="static/style.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script type="text/javascript" src="static/scripts.js"></script>
+
+</head>
+
+<body>
+	<div id="topMenu">
+		<ul>
+			<span class="menuButton">
+				<span id="logout">
+					<button id="logoutButton"> Logout </button>
+				</span>
+
+			</span>
+			<span class="menuButton">
+				<button id="loginButton" style="visibility: hidden;"> Login </button>
+				<div class="container">
+					<div id="accountLogin">
+						<form id="loginForm" autocomplete="off">
+							<label for="userName">Username:</label><br>
+							<input type="text" id="userNameLogin" name="userNameLogin"><br>
+							<label for="passWord">Password:</label><br>
+							<input type="password" id="passWordLogin" name="passWordLogin"><br><br>
+							<input type="submit" value="Submit">
+						</form>
+						<button id="createAccountButton">Create account</button>
+						<div class="load">Loading...</div>
+						<div class="message"></div>
+					</div>
+					<div id="createAccount">
+						<form id="createAccountForm" autocomplete="off">
+							<label for="userName">Username:</label><br>
+							<input type="text" id="userNameCreate" name="userNameCreate"><br>
+							<label for="password">Password:</label><br>
+							<input type="password" id="passwordCreate" name="passwordCreate"><br><br>
+							<label for="passwordConfirm">Confirm Password:</label><br>
+							<input type="password" id="passwordConfirm" name="passwordConfirm"><br><br>
+							<input id="createAccountSubmit" type="submit" value="Submit">
+						</form>
+						<div class="load">Loading...</div>
+						<div class="message"></div>
+					</div>
+
+				</div>
+			</span>
+			<span class="menuButton">
+				<li>
+					<button id=searchButton> Search </button>
+				</li>
+
+				<div class="container" id="searchContainer">
+					<form id="searchForm">
+						<input type="search" name="searchResult" required>
+						<select id="filter" name="filter">
+							<option value="Topic">Topic</option>
+							<option value="Claim">Claim</option>
+						</select>
+						<input type="submit">
+					</form>
+					<div class="icon"></div>
+					<div class="message"></div>
+					<div class="load">Loading...</div>
+				</div>
+
+			</span>
+			<span class="menuButton">
+				<li>
+					<button id="adminButton" style="display: none;"> Admin </button>
+				</li>
+				<div class="container" id="adminPanel">
+					<form id="assignAdmin">
+						<label for="adminAssign">Assign admin</label>
+						<input type="text" id="adminAssign" name="adminAssign" autocomplete="off" required>
+						<input type="submit">
+					</form>
+					<form id="adminDeleteUser">
+						<label for="deleteUser">Delete user</label>
+						<input type="text" id="deleteUser" name="deleteUser" autocomplete="off" required>
+						<input type="submit">
+					</form>
+					<form id="confirmChanges">
+						<label for="adminConfirm">Confirm changes</label>
+						<div id="confirmChangeDisplay"></div>
+						<input type="submit" value="Yes">
+						<button id="adminNoConfirm">No</button>
+					</form>
+					<div class="message"></div>
+					<div class="load">Loading...</div>
+				</div>
+			</span>
+			<div id="loggedIn">
+				<p>Logged in as : {% if userName is defined %}{{userName}}!{% else %} Not logged in! {% endif %}
+				</p>
+			</div>
+			<div id="logo">
+				<li>
+					<img id="websiteImage" src="static/Coffee.png" alt="coffee cup inside message icon">
+				</li>
+			</div>
+		</ul>
+	</div>
+	<div class="contentButton">
+		<button id="postTopicButton"> Post topic </button>
+		<button id="postClaimButton" style="display: none;"> Post claim </button>
+		<div class="container" id="topicButtonContainer">
+			<form id="postTopic">
+				<label for="topicName">Topic Name:</label><br>
+				<input type="text" id="topicName" name="topicName" autocomplete="off" required><br>
+				<input type="submit" value="Submit">
+			</form>
+			<div class="message"></div>
+			<div class="load">Loading...</div>
+		</div>
+		<div class="container" id="claimButtonContainer">
+			<form id="postClaim">
+				<label for="claimHeader">Claim Header:</label><br>
+				<input type="text" id="claimHeader" name="claimHeader" autocomplete="off" required><br>
+				<label for="claimContent">Claim Content:</label><br>
+				<input type="text" id="claimContent" name="claimContent" autocomplete="off" required><br>
+				<input type="hidden" id="formTopicId" name="topicId"><br>
+				<label for="relateClaim">Relate Claim:</label>
+				<table>
+					<tr>
+						<td>
+							<label for="opposedButton">Opposed:</label>
+						</td>
+						<td>
+							<label for="equivalentButton">Equivalent:</label>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button id="opposedClaim"> Add opposed claim </button>
+						</td>
+						<td>
+							<button id="equivalentClaim"> Add equivalent claim </button>
+						</td>
+					</tr>
+					<tr class="relationShipDisplay">
+						<td id="opposedDisplay">
+
+						</td>
+						<td id="equivDisplay">
+
+						</td>
+					</tr>
+				</table>
+				<input id="postClaimSubmit" type="submit" value="Submit" autocomplete="off" required>
+				<div id="finalSelection"></div>
+			</form>
+			<div class="message"></div>
+			<div class="load">Loading...</div>
+		</div>
+
+	</div>
+	<div id="content">
+		<div class="searchResult" style="display: none;">
+			<button id="closeSearchList" style="float: right;">close</button>
+			<p>Search Results</p>
+			<p id="noResults">No results</p>
+		</div>
+		<div class="topicList" id="active">
+			<div class="listContainer" id="topicTemplate">
+				<input type="checkbox" class="topicCheckBox" name="topicCheckbox" style="display: none;">
+				<div class="moveDisplay" style="display: none;">
+					<button class="moveBoxUp">Move Topic up</button>
+					<button id="placeTopic">Place Topic</button>
+					<button class="moveBoxDown">Move Topic down</button>
+					<div class="message"></div>
+					<div class="load">Loading...</div>
+				</div>
+				<div class="deleteDisplay" style="display: none;">
+					<p>Would you like to delete the topic?</p>
+					<button class="yesDelete">yes</button>
+					<button class="noDelete">no</button>
+					<div class="message"></div>
+					<div class="load">Loading...</div>
+				</div>
+				<div class="topic">
+					<div class="header"></div>
+					<div class="author"></div>
+					<div class="time"></div>
+				</div>
+				<div class="admin">
+					<button class="move">Move</button>
+					<button class="delete">Delete</button>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="claimList">
+			<button id="closeClaimList" style="float: right;">close &#10005;</button>
+			<button id="selectClaimList" style="float: right; display: none;">select</button>
+			<button id="cancelSelector" style="float: right; display: none;">cancel</button>
+			<div class="listContainer" id="claimTemplate">
+				<input type="checkbox" class="claimListCheckBox" name="claimListCheckbox" style="display: none;">
+				<div class="moveDisplay" style="display: none;">
+					<button class="moveBoxUp">Move Claim up</button>
+					<button id="selectTopicMove">Select Topic</button>
+					<button id="placeClaim">Place Claim</button>
+					<button class="moveBoxDown">Move Claim down</button>
+					<div class="message"></div>
+					<div class="load">Loading...</div>
+				</div>
+				<div class="deleteDisplay" style="display: none;">
+					<p>Would you like to delete the claim?</p>
+					<button class="yesDelete">yes</button>
+					<button class="noDelete">no</button>
+					<div class="message"></div>
+					<div class="load">Loading...</div>
+				</div>
+
+				<div class="claim">
+					<div class="header"></div>
+					<div class="author"></div>
+					<div class="time"></div>
+				</div>
+				<div class="admin">
+					<button class="move">Move</button>
+					<button class="delete">Delete</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="currentClaim"></div>
+		<div class="currentTopic"></div>
+		<div class="claimPage"></div>
+
+		<div class="claimContainer" id="claimPageTemplate">
+			<button class="closeClaimPage" style="float: right;">close &#10005;</button>
+			<div class="claimHead"></div>
+			<div class="claimContent">
+				<div class="opposed">
+					<div class="claimHeader">Opposed Claims</div>
+					<div class="contents"></div>
+				</div>
+				<div class="equivalent">
+					<div class="claimHeader">Equivalent Claims</div>
+					<div class="contents"></div>
+				</div>
+				<div class="claimHeader">
+					<div class="claimAuthor"></div>
+					<div class="claimTime"></div>
+				</div>
+				<div class="contents"></div>
+				<button class="replyButton">Reply</button>
+				<div class="container">
+					<div>Reply</div>
+					<form class="postReply">
+						<label for="replyMessage">Reply content:</label><br>
+						<input type="text" id="replyMessage" name="replyMessage">
+						<select id="replyDropDown" name="replyDropDown">
+							<option value="1">Clarification</option>
+							<option value="2">Supporting Argument</option>
+							<option value="3">counterargument</option>
+						</select>
+						<input type="hidden" class="formClaimId" name="formClaimId"><br>
+						<br>
+						<input type="submit" value="Submit">
+					</form>
+					<div class="message"></div>
+					<div class="load">Loading...</div>
+				</div>
+			</div>
+			<div class="noReplies">No replies to display</div>
+		</div>
+		<div class="replies" id="replyTemplate">
+			<table class="replyContainer">
+				<tr>
+					<td class="claimAuthor"></td>
+					<td class="claimTime"></td>
+				</tr>
+				<tr>
+					<td class="replyContents"></td>
+					<td class="movereplyDisplay" style="display: none;">
+						<button class="moveBoxUp">Move Reply up</button>
+						<button class="placeReply">Place Reply</button>
+						<button class="moveBoxDown">Move Reply down</button>
+						<div class="message"></div>
+						<div class="load">Loading...</div>
+					</td>
+					<td class="deleteDisplay" style="display:none;">
+						<p>Would you like to delete the reply?</p>
+						<button class="yesDelete">yes</button>
+						<button class="noDelete">no</button>
+						<div class="message"></div>
+						<div class="load">Loading...</div>
+					</td>
+					<td class="replyAdmin">
+						<button class="moveReply">move</button>
+						<button class="deleteReply">delete</button>
+						<button class="subReplySubmit">reply</button>
+						<div class="container" style="clear:both;">
+							<div>
+								Reply
+							</div>
+							<form class="formSubReply">
+								<label for="subReplyMessage">Reply content:</label><br>
+								<input type="text" class="subReplyMessage" name="subReplyMessage" required>
+								<select class="subReplyDropDown" name="subReplyDropDown">
+									<option value="1">Evidence</option>
+									<option value="2">Support</option>
+									<option value="3">Rebuttal</option>
+								</select>
+								<input type="hidden" class="currentReplyId" name="currentReplyId">
+								<input type="hidden" class="parentReplyId" name="parentReplyId">
+								<input type="hidden" class="parentType" name="parentType" value="parent">
+								<br>
+								<input type="submit" value="Submit">
+							</form>
+							<div class="message"></div>
+							<div class="load">Loading...</div>
+						</div>
+					</td>
+					<td class="replyTypeContent"></td>
+				</tr>
+				<tr>
+					<td class="replyShow" style="width: 99%;">
+						<button class="showReplies">Show replies</button>
+						<div class="message"></div>
+						<div class="load">Loading...</div>
+					</td>
+				</tr>
+
+
+			</table>
+		</div>
+</body>
+
+</html>
